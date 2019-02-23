@@ -1,0 +1,312 @@
+@font-face {
+  font-family: "Montserrat bold";
+  src: url("/fonts/Montserrat/Montserrat-Bold.ttf");
+}
+@font-face {
+  font-family: "Montserrat regular";
+  src: url("/fonts/Montserrat/Montserrat-Regular.ttf");
+}
+@font-face {
+  font-family: "Montserrat light";
+  src: url("/fonts/Montserrat/Montserrat-Light.ttf");
+}
+/* line 55, ../sass/screen.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* line 77, ../sass/screen.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 82, ../sass/screen.scss */
+body {
+  line-height: 1;
+}
+
+/* line 86, ../sass/screen.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 90, ../sass/screen.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 94, ../sass/screen.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 99, ../sass/screen.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 106, ../sass/screen.scss */
+body {
+  width: 100%;
+  background-color: #E6ECF0;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-family: Helvetica;
+  color: #333;
+}
+/* line 122, ../sass/screen.scss */
+body .hidden {
+  visibility: hidden;
+}
+/* line 137, ../sass/screen.scss */
+body a:link, body a, body a:visited {
+  color: #333;
+  transition: all 0.7s ease;
+}
+/* line 143, ../sass/screen.scss */
+body a:link:hover, body a:hover, body a:visited:hover {
+  color: #333;
+}
+/* line 159, ../sass/screen.scss */
+body nav {
+  width: 100%;
+  height: 83px;
+  border-bottom: 1px solid #333;
+  background-color: #ffffff;
+}
+/* line 168, ../sass/screen.scss */
+body nav h1 {
+  line-height: 84px;
+  font-size: 32px;
+  font-weight: bolder;
+  float: left;
+}
+/* line 178, ../sass/screen.scss */
+body nav a {
+  float: right;
+  height: 100%;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 84px;
+  text-decoration: none;
+  font-weight: bold;
+}
+/* line 190, ../sass/screen.scss */
+body nav a:last-child {
+  margin-right: 32px;
+}
+/* line 201, ../sass/screen.scss */
+body .page, body .wrap {
+  width: 1020px;
+  margin: 64px auto;
+}
+/* line 45, ../sass/screen.scss */
+body .page:after, body .wrap:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* line 209, ../sass/screen.scss */
+body .page.wrap, body .wrap.wrap {
+  margin: 0px auto;
+}
+@media (max-width: 1080px) and (min-width: 980px) {
+  /* line 201, ../sass/screen.scss */
+  body .page, body .wrap {
+    width: 960px;
+  }
+}
+@media (max-width: 980px) and (min-width: 720px) {
+  /* line 201, ../sass/screen.scss */
+  body .page, body .wrap {
+    width: 720px;
+  }
+}
+@media (max-width: 720px) and (min-width: 290px) {
+  /* line 201, ../sass/screen.scss */
+  body .page, body .wrap {
+    width: 90%;
+  }
+}
+@media (max-width: 290px) and (min-width: 0px) {
+  /* line 201, ../sass/screen.scss */
+  body .page, body .wrap {
+    width: 100%;
+  }
+}
+/* line 236, ../sass/screen.scss */
+body section, body header {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+/* line 45, ../sass/screen.scss */
+body section:after, body header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* line 247, ../sass/screen.scss */
+body .main {
+  width: calc(70% - 64px);
+  float: left;
+  margin-right: 64px;
+  background-color: #ffffff;
+}
+/* line 256, ../sass/screen.scss */
+body .aside {
+  width: calc(30%);
+  height: calc(100vh - 64px);
+  margin: 0px;
+  float: left;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 64px;
+}
+/* line 267, ../sass/screen.scss */
+body .aside .ad {
+  background-color: #ffffff;
+  width: 100%;
+  height: 300px;
+  margin-bottom: 64px;
+}
+/* line 284, ../sass/screen.scss */
+body section.newsfeed {
+  background-color: #E6ECF0;
+  margin-bottom: 64px;
+}
+/* line 287, ../sass/screen.scss */
+body section.newsfeed .news {
+  background-color: #ffffff;
+  margin-bottom: 64px;
+}
+/* line 290, ../sass/screen.scss */
+body section.newsfeed .news .pic {
+  width: 100%;
+  height: 360px;
+  position: relative;
+  background-image: url("https://picsum.photos/800/1000");
+  background-position: center;
+  background-size: cover;
+}
+/* line 299, ../sass/screen.scss */
+body section.newsfeed .news .pic iframe {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+/* line 306, ../sass/screen.scss */
+body section.newsfeed .news .pic .share {
+  width: 64px;
+  height: 64px;
+  border-radius: 32px;
+  background-color: #ffffff;
+  position: absolute;
+  bottom: 16px;
+  right: -32px;
+  line-height: 64px;
+  text-align: center;
+  font-size: 32px;
+}
+/* line 323, ../sass/screen.scss */
+body section.newsfeed .news .content {
+  width: calc(100% - 64px);
+  padding: 32px;
+}
+/* line 328, ../sass/screen.scss */
+body section.newsfeed .news .content h2 {
+  width: auto;
+  position: relative;
+  display: inline;
+  font-size: 20px;
+  line-height: 26px;
+}
+/* line 337, ../sass/screen.scss */
+body section.newsfeed .news .content h3 {
+  font-size: 12px;
+  line-height: 22px;
+}
+/* line 351, ../sass/screen.scss */
+body section.rank .buttons {
+  width: 100%;
+  height: 63px;
+  border-bottom: 1px solid #333;
+}
+/* line 356, ../sass/screen.scss */
+body section.rank .buttons a {
+  width: 50%;
+  height: 100%;
+  display: block;
+  float: left;
+  line-height: 64px;
+  text-align: center;
+}
+/* line 369, ../sass/screen.scss */
+body section.rank .pic {
+  width: 64px;
+  height: 64px;
+  border-radius: 32px;
+  background-image: url("https://picsum.photos/800/1000");
+  background-position: center;
+}
+/* line 380, ../sass/screen.scss */
+body section.rank table {
+  width: 100%;
+  margin-bottom: 64px;
+}
+/* line 385, ../sass/screen.scss */
+body section.rank table thead {
+  visibility: hidden;
+  height: 0px;
+  overflow: hidden;
+}
+/* line 392, ../sass/screen.scss */
+body section.rank table tr {
+  text-align: center;
+  line-height: 64px;
+  height: 64px;
+  border-bottom: 8px solid #ffffff;
+}
+/* line 424, ../sass/screen.scss */
+body footer {
+  width: 100%;
+  height: 500px;
+  float: left;
+  background-color: #333;
+}
+/* line 432, ../sass/screen.scss */
+body footer a {
+  width: 300px;
+  height: 64px;
+  display: block;
+  background-color: #ffffff;
+  color: #333;
+  text-decoration: none;
+  font-size: 20px;
+  text-align: center;
+  line-height: 64px;
+  margin: calc(250px - 32px) auto;
+}
