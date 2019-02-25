@@ -11,6 +11,13 @@ Les denieres news en matiere de bboying
 @section('content')
 
 <section class="main newsfeed">
+	@if ($page == 'actors')
+		<div class="news">
+			<div class="content">
+				<h2>{{ $actor }}</h2>
+			</div>
+		</div>
+	@endif
 	@foreach ($news as $new)
 		@if ($new->type == 'video')
 
@@ -20,7 +27,7 @@ Les denieres news en matiere de bboying
 					<!--<div class="share">+</div>-->
 				</div>
 				<div class="content">
-					<h3>{{ $new->actor }}</h3>
+					<a href="/{{ $new->url }}"><h3>{{ $new->actor }}</h3></a>
 					<h3>{{ $new->date }}</h3>
 					<p>{{ $new->text_video }}</p>
 		
@@ -31,7 +38,7 @@ Les denieres news en matiere de bboying
 				<!--<div class="pic" style="background-image:url('/');">
 				</div>-->
 				<div class="content">
-					<h3>{{ $new->actor }}</h3>
+					<a href="/{{ $new->url }}"><h3>{{ $new->actor }}</h3></a>
 					<h3>{{ $new->date }}</h3>
 					<p>{{ $new->text }}</p>
 		
@@ -42,7 +49,7 @@ Les denieres news en matiere de bboying
 		@elseif ($new->type == 'publication')
 			<div class="news">
 				<div class="content">
-					<h3>{{ $new->actor }}</h3>
+					<a href="/{{ $new->url }}"><h3>{{ $new->actor }}</h3></a>
 					<h3>{{ $new->date }}</h3>
 	
 					<p>{!! $new->text !!}</p>

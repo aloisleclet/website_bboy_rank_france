@@ -74,7 +74,7 @@
 		<nav>
 			<div class="wrap">
 				<h1>BBOY FRANCE</h1>
-				<!--<a href="/">Classement</a>-->
+				<a href="/rank">Classement</a>
 				<a href="/news">Bboy News</a>
 			</div>
 		</nav>

@@ -26,6 +26,12 @@ class DatabaseManager
 		});
 	
 	}
+
+	update_likes(name, likes)
+	{
+	 	console.log('[db] update'+name+' :'+likes+' actors');
+		this.db.query('UPDATE actors SET likes = '+likes+' WHERE name = "'+name+'"');
+	}
 	
 	upload(post)
 	{

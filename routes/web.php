@@ -11,8 +11,9 @@
 |
 */
 
-Route::get('/', 'Controller@news');
-Route::get('/rank', 'Controller@index');
+Route::get('/', 'Controller@news')->name('news');
+Route::get('/rank', 'Controller@rank')->name('rank');
+Route::get('/{actor}', 'Controller@actor');
 
 
 Route::group(['prefix' => 'admin'], function () {
