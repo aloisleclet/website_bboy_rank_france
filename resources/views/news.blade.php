@@ -23,7 +23,7 @@ Les denieres news en matiere de bboying
 
 			<div class="news">
 				<div class="pic">
-					<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fyesyesyes.guys%2Fvideos%2F{{ $new->id }}%2F&show_text=0&width=476" width="476" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
+					<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fyesyesyes.guys%2Fvideos%2F{{ $new->id }}%2F&show_text=0&width=620" width="620" height="360" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
 					<!--<div class="share">+</div>-->
 				</div>
 				<div class="content">

@@ -37,15 +37,13 @@ const DatabaseManager = require('./databasemanager.class');
 
 	//BOT
 	//-bug : scrap something and the author is not register in the db -> avoid when it's not in db ?
-	//-rank easy with like popularity.
 	//-save & display picture or hide it or link it.
 	//share things detect
 	//rank like
 	//ARCHITECTURE : PAGE class / POST class
+	//fucking permalink.php ?? length facebookbot.class 233 et 198
 
 	//SITE	
 	//-infinite scroll or limit 30
-	//-text format
-	//-link format
 
 })();

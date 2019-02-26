@@ -2,28 +2,98 @@
   font-family: "Montserrat bold";
   src: url("/fonts/Montserrat/Montserrat-Bold.ttf");
 }
+
 @font-face {
   font-family: "Montserrat regular";
   src: url("/fonts/Montserrat/Montserrat-Regular.ttf");
 }
+
 @font-face {
   font-family: "Montserrat light";
   src: url("/fonts/Montserrat/Montserrat-Light.ttf");
 }
-/* line 55, ../sass/screen.scss */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -33,41 +103,67 @@ time, mark, audio, video {
 }
 
 /* HTML5 display-role reset for older browsers */
-/* line 77, ../sass/screen.scss */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
   display: block;
 }
 
-/* line 82, ../sass/screen.scss */
 body {
   line-height: 1;
 }
 
-/* line 86, ../sass/screen.scss */
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 
-/* line 90, ../sass/screen.scss */
-blockquote, q {
+blockquote,
+q {
   quotes: none;
 }
 
-/* line 94, ../sass/screen.scss */
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
   content: '';
   content: none;
 }
 
-/* line 99, ../sass/screen.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 106, ../sass/screen.scss */
+h2 {
+  width: auto;
+  position: relative;
+  display: inline;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+h3 {
+  font-size: 12px;
+  line-height: 22px;
+}
+
+p,
+a {
+  font-size: 16px;
+  line-height: 20px;
+}
+
 body {
   width: 100%;
   background-color: #E6ECF0;
@@ -77,34 +173,68 @@ body {
   font-family: Helvetica;
   color: #333;
 }
-/* line 122, ../sass/screen.scss */
+
 body .hidden {
   visibility: hidden;
 }
-/* line 137, ../sass/screen.scss */
-body a:link, body a, body a:visited {
+
+body a:link,
+body a,
+body a:visited {
   color: #333;
+  -webkit-transition: all 0.7s ease;
   transition: all 0.7s ease;
 }
-/* line 143, ../sass/screen.scss */
-body a:link:hover, body a:hover, body a:visited:hover {
+
+body a:link:hover,
+body a:hover,
+body a:visited:hover {
   color: #333;
 }
-/* line 159, ../sass/screen.scss */
+
+body .button-nav {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  right: 28px;
+  top: 28px;
+}
+
+body .button-nav .line {
+  width: 48px;
+  height: 2px;
+  background-color: #333;
+  position: absolute;
+  -webkit-transition: all 0.7s ease;
+  transition: all 0.7s ease;
+}
+
+body .button-nav .line:first-child {
+  top: 0px;
+}
+
+body .button-nav .line:nth-child(2) {
+  top: 10px;
+}
+
+body .button-nav .line:last-child {
+  top: 22px;
+}
+
 body nav {
   width: 100%;
   height: 83px;
   border-bottom: 1px solid #333;
   background-color: #ffffff;
 }
-/* line 168, ../sass/screen.scss */
+
 body nav h1 {
   line-height: 84px;
   font-size: 32px;
   font-weight: bolder;
   float: left;
 }
-/* line 178, ../sass/screen.scss */
+
 body nav a {
   float: right;
   height: 100%;
@@ -114,69 +244,127 @@ body nav a {
   text-decoration: none;
   font-weight: bold;
 }
-/* line 190, ../sass/screen.scss */
+
 body nav a:last-child {
   margin-right: 32px;
 }
-/* line 201, ../sass/screen.scss */
-body .page, body .wrap {
+
+body nav .tab {
+  margin-right: 16px;
+}
+
+body nav .nav-mobile {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 80px;
+  right: -100vh;
+  background-color: #ffffff;
+  -webkit-transition: right 0.7s ease;
+  transition: right 0.7s ease;
+  z-index: 999;
+}
+
+body nav .nav-mobile a {
+  width: calc(100% - 32px);
+  height: 64px;
+  padding-left: 32px;
+  float: left;
+  display: block;
+  line-height: 64px;
+}
+
+body nav .nav-mobile.active {
+  right: 0px;
+}
+
+@media (max-width: 10000px) and (min-width: 500px) {
+  body nav .nav-mobile,
+  body nav .button-nav {
+    visibility: hidden;
+  }
+}
+
+@media (max-width: 500px) {
+  body nav .tab {
+    visibility: hidden;
+  }
+}
+
+body .page,
+body .wrap {
   width: 1020px;
   margin: 64px auto;
 }
-/* line 45, ../sass/screen.scss */
-body .page:after, body .wrap:after {
+
+body .page:after,
+body .wrap:after {
   content: "";
   display: table;
   clear: both;
 }
-/* line 209, ../sass/screen.scss */
-body .page.wrap, body .wrap.wrap {
+
+body .page.wrap,
+body .wrap.wrap {
   margin: 0px auto;
 }
+
 @media (max-width: 1080px) and (min-width: 980px) {
-  /* line 201, ../sass/screen.scss */
-  body .page, body .wrap {
+  body .page,
+  body .wrap {
     width: 960px;
   }
 }
+
 @media (max-width: 980px) and (min-width: 720px) {
-  /* line 201, ../sass/screen.scss */
-  body .page, body .wrap {
+  body .page,
+  body .wrap {
     width: 720px;
   }
 }
+
 @media (max-width: 720px) and (min-width: 290px) {
-  /* line 201, ../sass/screen.scss */
-  body .page, body .wrap {
+  body .page,
+  body .wrap {
     width: 90%;
   }
 }
+
 @media (max-width: 290px) and (min-width: 0px) {
-  /* line 201, ../sass/screen.scss */
-  body .page, body .wrap {
+  body .page,
+  body .wrap {
     width: 100%;
   }
 }
-/* line 236, ../sass/screen.scss */
-body section, body header {
+
+body section,
+body header {
   width: 100%;
   height: auto;
   position: relative;
 }
-/* line 45, ../sass/screen.scss */
-body section:after, body header:after {
+
+body section:after,
+body header:after {
   content: "";
   display: table;
   clear: both;
 }
-/* line 247, ../sass/screen.scss */
+
 body .main {
   width: calc(70% - 64px);
   float: left;
   margin-right: 64px;
   background-color: #ffffff;
 }
-/* line 256, ../sass/screen.scss */
+
+@media (max-width: 720px) and (min-width: 290px) {
+  body .main {
+    width: 100%;
+    margin: 0px;
+  }
+}
+
 body .aside {
   width: calc(30%);
   height: calc(100vh - 64px);
@@ -186,39 +374,76 @@ body .aside {
   position: sticky;
   top: 64px;
 }
-/* line 267, ../sass/screen.scss */
+
+body .aside:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 body .aside .ad {
   background-color: #ffffff;
   width: 100%;
-  height: 300px;
+  height: auto;
   margin-bottom: 64px;
+  position: relative;
+  overflow: hidden;
 }
-/* line 284, ../sass/screen.scss */
+
+body .aside .ad:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+body .aside .ad a {
+  padding: 32px;
+}
+
+body .aside .ad a img {
+  width: 218px;
+  position: relative;
+  margin: 32px auto;
+  display: block;
+}
+
+@media (max-width: 720px) and (min-width: 290px) {
+  body .aside {
+    width: 100%;
+    height: auto;
+    margin: 0px;
+  }
+}
+
 body section.newsfeed {
   background-color: #E6ECF0;
   margin-bottom: 64px;
 }
-/* line 287, ../sass/screen.scss */
+
 body section.newsfeed .news {
   background-color: #ffffff;
   margin-bottom: 64px;
 }
-/* line 290, ../sass/screen.scss */
+
 body section.newsfeed .news .pic {
   width: 100%;
-  height: 360px;
+  padding-top: 56.25%;
   position: relative;
-  background-image: url("https://picsum.photos/800/1000");
   background-position: center;
+  background-color: #ffffff;
   background-size: cover;
+  overflow: hidden;
 }
-/* line 299, ../sass/screen.scss */
+
 body section.newsfeed .news .pic iframe {
-  position: relative;
   width: 100%;
   height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border: 0px;
 }
-/* line 306, ../sass/screen.scss */
+
 body section.newsfeed .news .pic .share {
   width: 64px;
   height: 64px;
@@ -231,76 +456,119 @@ body section.newsfeed .news .pic .share {
   text-align: center;
   font-size: 32px;
 }
-/* line 323, ../sass/screen.scss */
+
 body section.newsfeed .news .content {
   width: calc(100% - 64px);
   padding: 32px;
 }
-/* line 328, ../sass/screen.scss */
-body section.newsfeed .news .content h2 {
-  width: auto;
-  position: relative;
-  display: inline;
-  font-size: 20px;
-  line-height: 26px;
-}
-/* line 337, ../sass/screen.scss */
-body section.newsfeed .news .content h3 {
-  font-size: 12px;
-  line-height: 22px;
-}
-/* line 351, ../sass/screen.scss */
+
 body section.rank .buttons {
   width: 100%;
   height: 63px;
   border-bottom: 1px solid #333;
 }
-/* line 356, ../sass/screen.scss */
+
 body section.rank .buttons a {
-  width: 50%;
+  width: 25%;
   height: 100%;
   display: block;
   float: left;
   line-height: 64px;
   text-align: center;
 }
-/* line 369, ../sass/screen.scss */
-body section.rank .pic {
-  width: 64px;
-  height: 64px;
-  border-radius: 32px;
-  background-image: url("https://picsum.photos/800/1000");
-  background-position: center;
-}
-/* line 380, ../sass/screen.scss */
+
 body section.rank table {
   width: 100%;
   margin-bottom: 64px;
 }
-/* line 385, ../sass/screen.scss */
+
 body section.rank table thead {
   visibility: hidden;
   height: 0px;
   overflow: hidden;
+  border: 0px;
+  display: block;
 }
-/* line 392, ../sass/screen.scss */
+
 body section.rank table tr {
   text-align: center;
   line-height: 64px;
   height: 64px;
-  border-bottom: 8px solid #ffffff;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
 }
-/* line 424, ../sass/screen.scss */
+
+body section.rank table tr td {
+  position: relative;
+}
+
+body section.rank table tr td:first-child,
+body section.rank table tr td:nth-child(2) {
+  width: 64px;
+}
+
+body section.rank table tr td .pic {
+  width: 49px;
+  height: 49px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  border-radius: 32px;
+  background-image: url("https://picsum.photos/800/1000");
+  background-position: center;
+}
+
+body section.rank table tr.hide {
+  opacity: 0;
+  height: 0px;
+  width: 0px;
+  border: 0px;
+  display: block;
+}
+
 body footer {
   width: 100%;
-  height: 500px;
+  height: auto;
   float: left;
   background-color: #333;
 }
-/* line 432, ../sass/screen.scss */
-body footer a {
-  width: 300px;
+
+body footer:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+body footer .left,
+body footer .right {
+  width: calc(50% - 64px);
+  height: calc(100% - 64px);
+  padding: 32px;
+  float: left;
+  position: relative;
+}
+
+body footer .left.left,
+body footer .right.left {
+  color: #ffffff;
+}
+
+body footer .left.left a,
+body footer .right.left a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+body footer .left.left p,
+body footer .right.left p {
+  margin: 16px auto;
+}
+
+body footer .left.left .cta a,
+body footer .right.left .cta a {
+  width: 306px;
   height: 64px;
+  margin: 32px auto;
   display: block;
   background-color: #ffffff;
   color: #333;
@@ -308,5 +576,30 @@ body footer a {
   font-size: 20px;
   text-align: center;
   line-height: 64px;
-  margin: calc(250px - 32px) auto;
+  -webkit-transition: all 0.7s ease;
+  transition: all 0.7s ease;
 }
+
+body footer .left.left .cta a:hover,
+body footer .right.left .cta a:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+@media (max-width: 320px) {
+  body footer .left.left .cta a,
+  body footer .right.left .cta a {
+    width: calc(100% - 32px);
+    margin: 32px 16px;
+  }
+}
+
+@media (max-width: 720px) and (min-width: 290px) {
+  body footer .left,
+  body footer .right {
+    width: calc(100% - 64px);
+    margin: 0px;
+    margin-top: 64px;
+  }
+}
+

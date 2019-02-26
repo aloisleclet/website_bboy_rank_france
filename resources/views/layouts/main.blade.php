@@ -73,26 +73,65 @@
 	<body>
 		<nav>
 			<div class="wrap">
-				<h1>BBOY FRANCE</h1>
-				<a href="/rank">Classement</a>
-				<a href="/news">Bboy News</a>
+				<h1>BBOY NEWS</h1>
+				<a class="tab" href="/rank">Classement</a>
+				<a class="tab" href="/news">News</a>
+
+				<div class="button-nav" id="button-nav">
+					<div class="line"></div>
+					<div class="line"></div>
+					<div class="line"></div>
+
+				</div>
+				<div class="nav-mobile">
+					<a href="/rank">Classement</a>
+					<a href="/news">News</a>
+				</div>
 			</div>
 		</nav>
 		<header class="page">
 			@yield('content')
 			<aside class="aside">
-				<div class="ad" id="ad"></div>
-				<div class="ad"></div>
-				<div class="ad"></div>
-			</aside>		
+				<div class="ad" id="ad">
+					<a target="_blank"  href="{{ $ads[0]->urla}}"><img border="0" src="{{ $ads[0]->urlb }}" ></a><img src="{{ $ads[0]->urlc }}" width="1" height="1" border="0" alt="{{ $ads[0]->name}}" style="border:none !important; margin:0px !important;" />
+				</div>
+				<div class="ad">
+					<a target="_blank"  href="{{ $ads[1]->urla}}"><img border="0" src="{{ $ads[1]->urlb }}" ></a><img src="{{ $ads[1]->urlc }}" width="1" height="1" border="0" alt="{{ $ads[1]->name}}" style="border:none !important; margin:0px !important;" />
+				</div>
+				<div class="ad">
+					<a target="_blank"  href="{{ $ads[2]->urla}}"><img border="0" src="{{ $ads[2]->urlb }}" ></a><img src="{{ $ads[2]->urlc }}" width="1" height="1" border="0" alt="{{ $ads[2]->name}}" style="border:none !important; margin:0px !important;" />
+				</div>
+			</aside>
 		</header>
 		<footer>
-			<div class="cta">
-				<a href="#">Partage</a>
+			<div class="left">
+				<h2>Bboy News</h2>
+				<p>Bboy News est un media 100% bboying francais. Notre equipe regroupe toute l'actualites bboying chaque jour pour vous offrir une experience unique et simplifie.</p>
+				<p>Le classement de bboy news est simplement base sur la popularites des acteurs (le nombre de like sur leurs pages facebook).</p>
+				<p>Si tu aime la culture hip hop et notre initiative, n'hesite pas a partager ce site web et a en parler autour de toi ! c'est ce qui nous aide le plus.</p>
+				<p>Si tu as des commentaires, des conseils, des suggestions n'hesite pas a <a href="">nous contacter</a></p>
+				<p>Pour ajouter ton evenement, ton profil bboy, ton crew au classements : <a href="">contacte nous</a></p>
+				<p>Peace</p>
+				<p>Bboy News Crew.</p>
+				<div class="cta">
+					<a href="#">Partager</a>
+				</div>
+			</div>
+			<div class="right">
 			</div>
 		</footer>
 		
-		<script src="./js/jquery.min.js"></script>
-		<script src="./js/script.js" type="text/javascript"></script>
+		<script src="{{ asset('js/jquery.min.js') }}" type="text/javascript"></script>
+		<script src="{{ asset('js/jscroll.min.js') }}" type="text/javascript"></script>
+		<script src="{{ asset('js/script.js') }}" type="text/javascript"></script>
 	</body>
 </html>
+
+
+
+
+
+
+
+
+

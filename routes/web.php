@@ -10,12 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
 
 Route::get('/', 'Controller@news')->name('news');
 Route::get('/rank', 'Controller@rank')->name('rank');
 Route::get('/{actor}', 'Controller@actor');
 
 
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});

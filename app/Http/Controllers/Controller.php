@@ -24,9 +24,9 @@ class Controller extends BaseController
 
 	public function rank()
 	{
-			
+		$ads = $this->get_ads();
 		$actors = DB::select('SELECT actors.url, actors.likes, actors.type, actors.name FROM actors ORDER BY likes DESC');
-		return view('rank', ['actors' => $actors]);
+		return view('rank', ['actors' => $actors, 'ads' => $ads]);
 	}
 
 
@@ -43,6 +43,7 @@ class Controller extends BaseController
 		}
 		else
 		{
+			$ads = $this->get_ads();
 			$actor = $request->actor;
 
 			$news = $this->get_news($actor);
@@ -50,14 +51,43 @@ class Controller extends BaseController
 			{
 				return redirect()->route('news');	
 			}
-			return view('news', ['news' => $news, 'actor'=> $actor, 'page' => 'actors']);
+
+			return view('news', ['news' => $news, 'actor'=> $actor, 'page' => 'actors', 'ads' => $ads]);
 		}
 	}
 
 	public function news()
 	{
 		$news = $this->get_news();
-		return view('news', ['news' => $news, 'page' => 'news']);
+		$ads = $this->get_ads();
+		return view('news', ['news' => $news, 'page' => 'news', 'ads' => $ads]);
+	}
+
+	public function get_ads()
+	{
+		$products = DB::select('SELECT ads.* FROM ads ORDER BY id DESC');
+
+		$products_size = sizeof($products) - 1;
+
+
+		$rand = array();
+		while (sizeof($rand) < 3)
+		{
+
+				$r = rand(0, $products_size);
+			if (!in_array($r, $rand))
+			{
+				$rand[] = $r;
+			}	
+		}
+
+		$ads = [
+			$products[$rand[2]],
+			$products[$rand[1]],
+			$products[$rand[0]]
+		];
+
+		return $ads;
 	}
 	
 	public function get_news($actor_name = false)

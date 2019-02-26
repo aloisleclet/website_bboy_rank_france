@@ -8,61 +8,115 @@ class FacebookBot
 		
 		this.name = name;
 		this.page = null;
+		this.browser = null;
 		console.log('['+this.name+'] is up');
 	}
 
 	async init()
 	{
-		let browser = await puppeteer.launch({});
-		this.page = await browser.newPage();
+		this.browser = await puppeteer.launch({headless:true});
+		this.page = await this.browser.newPage();
 		return this.page;
 	}
 
 	async go(url)
 	{
-		await this.page.goto(url);
-		console.log('['+name+'] '+this.clean_url(url));
-		//await utils.sleep(1000);
+		await this.page.goto(url, {waitUntil: 'networkidle2'});
+		console.log('['+this.name+'] '+this.clean_url(url));
 	}
 	
 	kill()
 	{
 		browser.close();
-		console.log('['+name+'] is down');
+		console.log('['+this.name+'] is down');
 	}
-	
-	async get_first_post_permalink(url)
+
+	async get_likes(url)
+	{
+		await this.page.goto(url, {waitUntil: 'networkidle2'});
+		
+		let likes = await this.page.evaluate(() =>
+		{
+			let n = String(0);
+			if (document.body.querySelector('#pages_side_column ._4bl9 div') !== null)
+			{
+				n = String(document.body.querySelector('#pages_side_column ._4bl9 div').textContent.split(' ')[0]);
+				n = n.replace(/\s/g, '');
+			}
+			return n;
+			
+		});
+
+		console.log('['+this.name+'] '+this.clean_url(url)+' likes:'+likes+' like');
+		return likes;
+	}
+
+	async get_n_first_post_permalink(n, url)
 	{
 		//go to permalink
-		await this.page.goto(url);
+		await this.page.goto(url, {waitUntil: 'networkidle2'});
 		console.log('['+this.name+'] '+this.clean_url(url));
-	//	await utils.sleep(500);
 		
-		return await this.page.evaluate(() =>
+		let permalinks = await this.page.evaluate(async (n) =>
 		{
-		
-			let userContentWrapper = document.getElementsByClassName('userContentWrapper');
-			let permalink = null;
-		
-			if (typeof userContentWrapper[0] !== 'undefined')
-			{
-				permalink = userContentWrapper[0].querySelector('._5pcp a').href;
+			//kill fb popup for debug
+			if (document.getElementById('u_0_1m') !== null && typeof document.getElementById('u_0_1m') !== 'undefined')
+				document.getElementById('u_0_1m').style.top = '-10000px';
+			if (document.getElementById('u_0_1k') !== null && typeof document.getElementById('u_0_1k') !== 'undefined')
+				document.getElementById('u_0_1k').style.top = '-10000px';
+
+			//wait scroll
+			var scroll = function (n) // problem where page don't have n post.
+			{  
+				return new Promise ((resolve, reject) =>
+				{
+					let i = 1;
+					let timer = setInterval(() =>
+					{
+						let limit = n * 1500;
+
+						window.scrollBy(0, 300);
+
+						if ((window.scrollY > limit) || i > 50)
+						{
+							clearInterval(timer);
+							resolve();
+						}
+					
+	
+						i++;
+					}, 100);
+				});
 			}
+
+			await scroll(n);
+	
+			let permalinks = [];
+			let i = 0;
+			let permalinks_found = document.querySelectorAll('.userContentWrapper .z_c3pyo1brp a').length;
 		
-			if (permalink != null && permalink.split('?')[1].split('=')[0] == 'story_fbid') //avoid storys
-				permalink = null;
+			while (i < n && i < permalinks_found)
+			{
+				permalinks.push(document.querySelectorAll('.userContentWrapper .z_c3pyo1brp a')[i].href);
+				i++;
+			}
+		//	if (permalink != null && permalink.split('?')[1].split('=')[0] == 'story_fbid') //avoid storys
+		//		permalink = null;
 			
-			return permalink;
-		});
+			return permalinks;
+		}, n);
+	
+		return permalinks;
 	}
 
 	async get_post(permalink)
 	{
-		await this.page.goto(permalink);
+		await this.page.goto(permalink, {waitUntil: 'networkidle2'});
 		console.log('['+this.name+'] '+this.clean_url(permalink));
 		//await utils.sleep(1000);
 		let post = await this.page.evaluate(() =>
 		{
+		
 			let wrap = document.getElementsByClassName('_3ekx');
 		
 			let res = {};	
@@ -77,11 +131,6 @@ class FacebookBot
 			}
 		
 			
-			//video id	
-			if (res.type == 'video')
-			{
-				res.id = res.url.split('/')[5];	
-			}
 			
 			//link	
 			if (typeof wrap[0] !== 'undefined' && wrap[0].querySelectorAll('a').length > 0)
@@ -99,7 +148,7 @@ class FacebookBot
 			
 			if (typeof wrap[0] !== 'undefined' && wrap[0].querySelectorAll('p').length > 0)
 			{
-				res.text = wrap[0].querySelector('p').innerText;
+				res.text = wrap[0].innerText;
 			}
 			
 			//timestamp
@@ -140,7 +189,6 @@ class FacebookBot
 		
 		//clean urls
 	
-		post.url = this.clean_url(post.url);
 
 		if (post.hasOwnProperty('author'))
 			post.author.href = this.clean_url(post.author.href);
@@ -149,9 +197,17 @@ class FacebookBot
 		//set type
 		post.type = this.get_type(post.url);
 		
+		//video id	
+		if (post.type == 'video')
+		{
+			post.id = post.url.split('/')[5];	
+		}
 	
-		return post;
 		
+		if (post.url.split('/')[3] == 'permalink.php')
+			return null;
+		post.url = this.clean_url(post.url);
+		return post;
 	}
 
 	//UTILS FUNCTION
@@ -171,6 +227,8 @@ class FacebookBot
 	
 	get_type(url)
 	{
+		if (url.split('/')[3] == 'permalink.php')
+			return 'error';
 		let type = url.split('/')[4];
 		if (type[type.length - 1] == 's')
 			type = type.substr(0, type.length - 1);

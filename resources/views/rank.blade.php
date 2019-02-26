@@ -14,24 +14,19 @@ Le classement des meilleurs bboys francais.
 
 <section class="main rank">
 	<div class="buttons">
-		<a href="#crew">CREW</a>
-		<a href="#bboy">BBOY</a>
-		<a href="#event">EVENT</a>
+		<a id="all" href="#all">TOUT</a>
+		<a id="crew" href="#crew">CREW</a>
+		<a id="bboy" href="#bboy">BBOY</a>
+		<a id="event" href="#event">EVENT</a>
 	</div>
-	<table>
-		<thead>
-			<tr>
-				<td>N</td>
-				<td>Profil</td>	
-				<td>Nom</td>	
-				<td>Likes</td>	
-			</tr>
-		</thead>
+	<table cellpadding=0 cellspacing=0>
 		<tbody>
 			@foreach( $actors as $actor)
 			<tr data-type="{{ $actor-> type }}">
 				<td>{{ $loop->iteration}}</td>
-				<td class="pic"></td>
+				<td>
+					<div class="pic"></div>
+				</td>
 				<td>
 					<a href="/{{ $actor->name }}">
 						{{ $actor->name}}
@@ -43,7 +38,6 @@ Le classement des meilleurs bboys francais.
 					</a>
 				</td>
 			</tr>
-			</a>
 			@endforeach
 		</tbody>
 	</table>	
