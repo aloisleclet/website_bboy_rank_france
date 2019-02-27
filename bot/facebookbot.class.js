@@ -112,7 +112,7 @@ class FacebookBot
 	async get_post(permalink)
 	{
 		await this.page.goto(permalink, {waitUntil: 'networkidle2'});
-		console.log('['+this.name+'] '+this.clean_url(permalink));
+		console.log('['+this.name+'] get_post:'+this.clean_url(permalink));
 		//await utils.sleep(1000);
 		let post = await this.page.evaluate(() =>
 		{
@@ -204,8 +204,6 @@ class FacebookBot
 		}
 	
 		
-		if (post.url.split('/')[3] == 'permalink.php')
-			return null;
 		post.url = this.clean_url(post.url);
 		return post;
 	}
@@ -227,6 +225,7 @@ class FacebookBot
 	
 	get_type(url)
 	{
+		console.log(url); //here is the bug permalink...
 		if (url.split('/')[3] == 'permalink.php')
 			return 'error';
 		let type = url.split('/')[4];

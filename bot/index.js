@@ -17,7 +17,7 @@ const FacebookBot = require('./facebookbot.class'); // to rename facebook bot
 	{
 		//get permalink
 
-		let permalinks = await bot.get_n_first_post_permalink(3, actors[i].url);
+		let permalinks = await bot.get_n_first_post_permalink(10, actors[i].url);
 
 		//scrap
 		let j = 0;

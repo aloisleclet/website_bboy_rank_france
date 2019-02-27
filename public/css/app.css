@@ -170,11 +170,14 @@ body {
   position: absolute;
   top: 0px;
   left: 0px;
+  overflow-x: hidden;
   font-family: Helvetica;
   color: #333;
 }
 
 body .hidden {
+  position: fixed;
+  top: -1000px;
   visibility: hidden;
 }
 
@@ -422,6 +425,7 @@ body section.newsfeed {
 
 body section.newsfeed .news {
   background-color: #ffffff;
+  overflow-wrap: break-word;
   margin-bottom: 64px;
 }
 
@@ -432,7 +436,6 @@ body section.newsfeed .news .pic {
   background-position: center;
   background-color: #ffffff;
   background-size: cover;
-  overflow: hidden;
 }
 
 body section.newsfeed .news .pic iframe {
@@ -450,11 +453,19 @@ body section.newsfeed .news .pic .share {
   border-radius: 32px;
   background-color: #ffffff;
   position: absolute;
-  bottom: 16px;
+  bottom: 32px;
   right: -32px;
   line-height: 64px;
   text-align: center;
   font-size: 32px;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+  overflow: hidden;
+}
+
+body section.newsfeed .news .pic .share:hover span {
+  -webkit-transform: rotateX(400deg);
+          transform: rotateX(400deg);
 }
 
 body section.newsfeed .news .content {

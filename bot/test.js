@@ -33,17 +33,17 @@ const DatabaseManager = require('./databasemanager.class');
 
 	//todo
 	//bboynews.fr
-	
 
 	//BOT
-	//-bug : scrap something and the author is not register in the db -> avoid when it's not in db ?
+	//clean + error managment
+	
+	//-clean way to fix bug : scrap something and the author is not register in the db -> avoid when it's not in db ?
 	//-save & display picture or hide it or link it.
-	//share things detect
-	//rank like
 	//ARCHITECTURE : PAGE class / POST class
 	//fucking permalink.php ?? length facebookbot.class 233 et 198
 
 	//SITE	
-	//-infinite scroll or limit 30
-
+	//Controller clean	
+	//ads responsive mode avoid to infinite scroll -> del ads on responsive ? -> add ads between posts.
+	//bug newsfeed all news are not displayed?
 })();

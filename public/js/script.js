@@ -1,5 +1,7 @@
 $(document).ready(function ()
 {
+	//rank nav
+
 	let click = 0;
 	$('#button-nav').on('click', function ()
 	{
@@ -65,6 +67,54 @@ $(document).ready(function ()
 	});
 
 	//infinite scroll
+	$(window).scroll(function()
+	{
+    		if($(window).scrollTop() + $(window).height() >= $(document).height() - 530)
+		{
+        		let next = $("#last_id").attr("href");
+			console.log(next);
+        		load(next);
+		}
+	});
 
+	let url_loaded = [];
+
+	function load(next)
+	{
+		if (url_loaded.includes(next))
+		{
+			//display end
+			return 0;
+		}
+		else
+			url_loaded.push(next);
+		$.ajax(
+		{
+			url: next,
+			type: "get",
+			context: "document.body",
+			beforeSend: function()
+			{
+				$('.loading').show();
+			}
+		})
+		.done(function(data)
+		{
+			$('.loading').hide();
+			var page = document.createElement('html');
+			page.innerHTML = data;
+			let news = page.getElementsByClassName('news');
+			let i = 0;
+			while (i < news.length)
+			{
+				$("#news").append(news[i]);
+				i++;
+			}
+		})
+		.fail(function(jqXHR, ajaxOptions, thrownError)
+		{
+			alert('server not responding...');
+		});
+	}
 });
 

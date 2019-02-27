@@ -39,7 +39,8 @@ $background-color:#E6ECF0;
 
 //Mixins
 
-@mixin clearfix {
+@mixin clearfix
+{
 	&:after
 	{
 		content: "";
@@ -130,7 +131,7 @@ body
 	top:0px;
 	left:0px;
 
-
+	overflow-x:hidden;
 
 	font-family:Helvetica;
 	color:$black;
@@ -140,6 +141,8 @@ body
 
 	.hidden
 	{
+		position:fixed;
+		top:-1000px;
 		visibility:hidden;
 	}
 
@@ -412,9 +415,11 @@ body
 		&.newsfeed
 		{
 			background-color:$background-color;
+
 			.news
 			{
 				background-color:$white;
+				overflow-wrap:break-word;
 				.pic
 				{
 					width:100%;
@@ -424,8 +429,6 @@ body
 					background-color:$white;
 					background-size:cover;
 
-					overflow:hidden;
-
 					iframe
 					{
 						width:100%;
@@ -433,7 +436,8 @@ body
 						position:absolute;
 						top:0px;
 						left:0px;
-						border:0px
+						border:0px;
+
 					}
 
 					.share
@@ -444,11 +448,22 @@ body
 						background-color:$white;
 	
 						position:absolute;
-						bottom:16px;
+						bottom:32px;
 						right:-32px;
 						line-height:64px;
 						text-align:center;
 						font-size:32px;
+
+						transition:all 1s ease;
+						overflow:hidden;
+
+						&:hover
+						{
+							span
+							{
+								transform:rotateX(400deg);
+							}
+						}
 					}
 
 				}
@@ -457,8 +472,6 @@ body
 				{
 					width:calc(100% - 64px);
 					padding:32px;	
-
-
 					
 				}
 

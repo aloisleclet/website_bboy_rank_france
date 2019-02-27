@@ -75,7 +75,7 @@
 			<div class="wrap">
 				<h1>BBOY NEWS</h1>
 				<a class="tab" href="/rank">Classement</a>
-				<a class="tab" href="/news">News</a>
+				<a class="tab" href="/">News</a>
 
 				<div class="button-nav" id="button-nav">
 					<div class="line"></div>
@@ -85,7 +85,7 @@
 				</div>
 				<div class="nav-mobile">
 					<a href="/rank">Classement</a>
-					<a href="/news">News</a>
+					<a href="/">News</a>
 				</div>
 			</div>
 		</nav>
@@ -114,7 +114,7 @@
 				<p>Peace</p>
 				<p>Bboy News Crew.</p>
 				<div class="cta">
-					<a href="#">Partager</a>
+					<a href="https://www.facebook.com/sharer/sharer.php?u=https://bboynews.fr" target="_blank">Partager</a>
 				</div>
 			</div>
 			<div class="right">

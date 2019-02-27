@@ -3,7 +3,6 @@ const Database = require('./database.class');
 
 class DatabaseManager
 {
-
 	//retrieve actors
 	constructor()
 	{
@@ -42,8 +41,9 @@ class DatabaseManager
 			let url_actor = post.author.href;
 			let text_video = this.rm_emoji(post.text);
 			console.log('[db] upload '+id_video+' from '+post.author.value);
-	
-			this.db.query('INSERT IGNORE INTO videos values("'+id_video+'", "'+timestamp+'", (SELECT id FROM actors WHERE actors.url = "'+url_actor+'"), "'+text_video+'", NULL, NULL)');
+
+			let sql = 'INSERT IGNORE INTO publications values(NULL, '+timestamp+', (SELECT id FROM actors WHERE actors.url = "'+url_actor+'"), "'+text_video+'", NULL, NULL, '+id_video+', NULL, 1)';
+			this.db.query(sql);
 		}
 		else if (post.type == 'publication')
 		{
@@ -51,7 +51,9 @@ class DatabaseManager
 			let url_actor = post.author.href;
 			let text = this.rm_emoji(post.text);
 			console.log('[db] upload post from '+post.author.value);
-			this.db.query('INSERT IGNORE INTO publications values(NULL, "'+timestamp+'", (SELECT id FROM actors WHERE actors.url = "'+url_actor+'"), "'+text+'", NULL, NULL)');
+			//this.db.query('INSERT IGNORE INTO publications values(NULL, "'+timestamp+'", (SELECT id FROM actors WHERE actors.url = "'+url_actor+'"), "'+text+'", NULL, NULL)');//here
+			let sql = 'INSERT IGNORE INTO publications values(NULL, '+timestamp+', (SELECT id FROM actors WHERE actors.url = "'+url_actor+'"), "'+text+'", NULL, NULL, NULL, NULL, 0)';
+			this.db.query(sql);
 								
 		}
 		else if (post.type == 'link')
@@ -59,7 +61,7 @@ class DatabaseManager
 			let timestamp = post.timestamp;
 			let url_actor = post.author.href;
 			let text = this.rm_emoji(post.text+'<br/><a href=\\"'+post.link.href+'\\" target=\\"_blank\\">'+post.link.value+'</a>'); // here is the sh
-			let sql = 'INSERT IGNORE INTO publications values(NULL, "'+timestamp+'", (SELECT id FROM actors WHERE actors.url = "'+url_actor+'"), "'+text+'", NULL, NULL)';
+			let sql = 'INSERT IGNORE INTO publications values(NULL, '+timestamp+', (SELECT id FROM actors WHERE actors.url = "'+url_actor+'"), "'+text+'", NULL, NULL, NULL, NULL, 0)';
 			this.db.query(sql);
 			console.log('[db] upload: post from '+post.author.value);
 				
@@ -72,7 +74,7 @@ class DatabaseManager
 	{
 		if (typeof text === 'undefined')
 			return '';
-		return text.replace(/(?:[\u2700-\u27bf]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff])[\ufe0e\ufe0f]?(?:[\u0300-\u036f\ufe20-\ufe23\u20d0-\u20f0]|\ud83c[\udffb-\udfff])?(?:\u200d(?:[^\ud800-\udfff]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff])[\ufe0e\ufe0f]?(?:[\u0300-\u036f\ufe20-\ufe23\u20d0-\u20f0]|\ud83c[\udffb-\udfff])?)*/g, '');
+		return escape(text.replace(/(?:[\u2700-\u27bf]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff])[\ufe0e\ufe0f]?(?:[\u0300-\u036f\ufe20-\ufe23\u20d0-\u20f0]|\ud83c[\udffb-\udfff])?(?:\u200d(?:[^\ud800-\udfff]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff])[\ufe0e\ufe0f]?(?:[\u0300-\u036f\ufe20-\ufe23\u20d0-\u20f0]|\ud83c[\udffb-\udfff])?)*/g, ''));
 	}
 
 }
